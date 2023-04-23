@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "open_ai_inage_generator",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,8 @@
   "dependencies": {
     "file-saver": "^2.0.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
@@ -21,5 +22,9 @@
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.1",
     "vite": "^4.2.0"
-  }
+  },
+  "main": "postcss.config.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
