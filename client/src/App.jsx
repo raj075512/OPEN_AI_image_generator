@@ -22,7 +22,7 @@ const App = () => {
 
       {/* //main section // */}
 
-      <main className="sm: p-8 px-4 py-6 w-full bg-[#ececec] min-h-[calc(100vh-73px)] ">
+      <main className=" flex justify-start sm: p-8 px-4 py-6 w-full bg-[#c3cfc6] min-h-[calc(100vh-50px)]  ">
 
         <Routes>
             <Route path="/" element={<Home/>}  />
