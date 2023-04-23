@@ -1,7 +1,7 @@
 import React from "react";
 import { logo } from "./assets";
-import { home, CreatePost } from "./pages";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Home, CreatePost } from "./pages";
+import { BrowserRouter, Link ,Routes, Route} from "react-router-dom";
 
 const App = () => {
   return (
@@ -13,7 +13,23 @@ const App = () => {
         <Link to="/">
           <img src={logo} alt="logo" className="w-28 object-contain" />{" "}
         </Link>
+        <Link to="/createPost">
+          <button className="text-white font-inter font-medium bg-[blue] px-5 py-2 rounded-md  ">
+            create
+          </button>
+        </Link>
       </header>
+
+      {/* //main section // */}
+
+      <main className="sm: p-8 px-4 py-6 w-full bg-[#ececec] min-h-[calc(100vh-73px)] ">
+
+        <Routes>
+            <Route path="/" element={<Home/>}  />
+            <Route path="/createPost" element={<CreatePost/>}  />
+        </Routes>
+
+      </main>
     </BrowserRouter>
   );
 };
