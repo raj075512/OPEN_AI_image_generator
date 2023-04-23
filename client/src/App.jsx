@@ -1,12 +1,16 @@
 import React from 'react'
-import logo from "./assets";
+import {logo} from "./assets";
+import {home,CreatePost} from "./pages"
+import { BrowserRouter } from 'react-router-dom';
 
-
-function App() {
+const  App=()=> {
   return (
-    <div className='text-3x1 font-bold underline'>
-      hello new project
-    </div>
+  <BrowserRouter>
+    <header className='w-full flex justify-between items-center bg-white
+    sm:px-8 py-4 border-b border-b-[grey]'>
+     <img src="" alt="" />
+    </header>
+  </BrowserRouter>
   )
 }
 
