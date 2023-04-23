@@ -1,11 +1,14 @@
 import React from 'react'
+import logo from "./assets";
 
-const App = () => {
+
+function App() {
   return (
-    <div>
-      dkfj g
+    <div className='text-3x1 font-bold underline'>
+      hello new project
     </div>
   )
 }
 
-export default App
+export default App;
+
