@@ -1,11 +1,12 @@
 import React from 'react'
 
-const App = () => {
+function App() {
   return (
-    <div>
-      
+    <div className='text-3x1 font-bold underline'>
+      hello new projects
     </div>
   )
 }
 
-export default App
+export default App;
+
