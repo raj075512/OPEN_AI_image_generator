@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 
- const PostModels=new mongoose.Schema({
+ const Post=new mongoose.Schema({
     name:{
         type:String,
         required :true,
@@ -17,5 +17,5 @@ import mongoose from "mongoose";
     },
  })
 
- const PostSchema=mongoose.model('PostModels',PostModels);
+ const PostSchema=mongoose.model('Post',Post);
  export default PostSchema;

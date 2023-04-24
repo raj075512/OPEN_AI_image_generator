@@ -20,7 +20,11 @@ app.use(cors());
 
 app.use(express({ limit: "50mb" })); // middleware limits //
 
+//api end points routes //
+app.use('/api/v1/post',PostRoutes);
+app.use('/api/v1/dalle',DallERoutes);
 
+// to check the backend server started or not //
 app.get("/", async (req, res) => {
   res.send("hello backend");
 });
@@ -30,14 +34,11 @@ const serverStart = async () => {
  
     try{
         connectDB(process.env.MONGODB_URL);
+
+        app.listen(port,()=>{ console.log('server has started on https://localhost:8080') })
     }catch(error) {
     alert(`{error}`);
     }
-
-
-  app.listen(port,async()=>{
-    console.log(`the backend has been started on port ${port} `)
-  })
 };
 
 
