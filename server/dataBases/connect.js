@@ -5,7 +5,7 @@ const connectDB =(url)=>{
     mongoose.set('strictQuery',true);
     mongoose.connect(url)
     .then(()=>console.log('mongoDB connect '))
-    .catch((err)=>console.log(`mongoDB disconnected  ,${err} `))
+    .catch((err)=>console.log(`mongoDB disconnected in connectDB ,${err} `))
 
 }
 

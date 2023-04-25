@@ -6,27 +6,52 @@ import Loader from "../Components/Loader";
 import { getRandomPrompt } from "../utils";
 
 const CreatePost = () => {
-  const HandleGenerateImage = () => {};
+  const nevigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    name: '',
+    prompt: '',
+    photo: '',
+    
+  });
+  const [generatingImg, setGeneratingImg] = useState(false);
+
+
+  const HandleGenerateImage = async () => {
+    if (form.prompt) {
+      try {
+        setGeneratingImg(true);
+        const response = await fetch('http://localhost:8080/api/v1/dalle', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body :JSON.stringify({ prompt: form.prompt }),
+        })
+        const data = await response.json(); // convert the response into json format //
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo} ` });
+      } catch (error) {
+        alert(`error from backend and on handleGeneratemage`);
+      } finally {
+        setGeneratingImg(false);
+      }
+    } else {
+      alert("please enter the prompt");
+    }
+  };
   const handleSubmit = () => {
     // window.alert("submiited");
   };
   const handleChange = (e) => {
-    setForm({...form ,[e.target.name]:e.target.value})
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleSurpriseMe = () => {
-    const randomPrompt=getRandomPrompt(form.prompt);
-    setForm({...form ,prompt:randomPrompt});
+    const randomPrompt = getRandomPrompt(form.prompt);
+    setForm({ ...form, prompt: randomPrompt });
   };
 
-  const nevigate = useNavigate(); // return the page after the loading is compelte //
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    photo: "",
-    prompt: "",
-  });
-  const [generatingImg, setGeneratingImg] = useState();
 
+ 
   return (
     <section className="max-w-7xl mx-auto ">
       <div>
@@ -59,7 +84,7 @@ const CreatePost = () => {
             handleSurpriseMe={handleSurpriseMe}
           />
           <div
-            className="relative  border-[#a8a8a8] bg-gray-60 border border-gray-300 text-gray-300
+            className="relative   bg-gray-60 border border-gray-300 text-gray-300
                   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3
                   flex justify-center items-center "
           >
@@ -93,15 +118,13 @@ const CreatePost = () => {
             className="mt-1 text-[10px] w-full   bg-[#207620] rounded-md  
           text-white text-centerpx-2  sm:w-auto px-1 py-2  "
             onClick={HandleGenerateImage}
-          >
-            {" "}
-            generate image
+          >{
+            generatingImg ? 'generating.... ':'generate '
+          }
           </button>
         </div>
-        <h2 className="text-[10px] mx-1">
-          {generatingImg ? " generating..." : ".. "}
-        </h2>
-        <div className="mt-2">
+        
+        <div className="mt-6">
           <p className="mt-2 text-[#5e5b5b] text-[12px]  ">
             once you generated the image u want, u can share with your friends .
           </p>
@@ -110,7 +133,7 @@ const CreatePost = () => {
             className="mt-3 w-full text-center text-[10px] text-white bg-blue-900  flex justify-center items-center
                rounded-md px-2 py-1 sm:  "
           >
-            share with community{" "}
+                {loading ? 'sharing ... ':'share with the community  '}
           </button>
         </div>
       </form>

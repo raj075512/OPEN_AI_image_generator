@@ -15,12 +15,12 @@ const configuration = new Configuration({ // understand with timetaken  //
 const openai=new OpenAIApi(configuration);
 
 router.route('/').get((req,res)=>{
-    res.send('hello from dall-e');
+    res.send('hello from dall-e Routes ');
 })
 
 router.route('/').post(async(req,res)=>{
     try{
-     const {prompt}  =res.body;
+     const {prompt}  =req.body;
       const aiResponse =await openai.createImage({
         prompt,
         n:1,

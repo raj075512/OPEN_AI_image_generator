@@ -6,6 +6,7 @@ handleChange,isSurpriseMe ,handleSurpriseMe}) => {
     <div>
       <div className='flex items-center gap-2 mb-2' >
            <label htmlFor={name} className='block text-sm w-full  font-medium text-gray-900'>{labelName}
+           </label>
               {isSurpriseMe && (
                 <button type='button'onClick={handleSurpriseMe}
                 className=' text-[8px] text-[white] bg-[#09900b]  px-2 mx-2 rounded-[3px] ' >
@@ -13,6 +14,7 @@ handleChange,isSurpriseMe ,handleSurpriseMe}) => {
                 </button>
                 
               )}
+              
               <input type={type}
                value={value}
                placeholder={placeholder}
@@ -24,8 +26,8 @@ handleChange,isSurpriseMe ,handleSurpriseMe}) => {
                outline-none rounded-md h-6 bg-[#ededed] px-2'
                
               />
-        
-            </label>
+           
+            
       </div>
     </div>
   )
